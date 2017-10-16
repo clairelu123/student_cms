@@ -1,0 +1,17 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="enrolls delete">
+  <h2>Delete Enrollment</h2>
+
+  <%= form_for(:enroll, :url => {:action => 'destroy', :id => @enroll.id}) do |f| %>
+
+    <p>Are you sure you want to permanently delete this enroll?</p>
+
+    <p class="reference-name"><%= @enroll.course.name %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Delete enrollment") %>
+    </div>
+
+  <% end %>
+</div>

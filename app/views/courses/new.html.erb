@@ -1,0 +1,25 @@
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="courses new">
+  <h2>Create course</h2>
+
+  <%= form_for(:course, :url => {:action => 'create'}) do |f| %>
+
+    <table summary="Course form fields">
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name) %></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td><%= f.text_field(:description) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create Course") %>
+    </div>
+
+  <% end %>
+</div>

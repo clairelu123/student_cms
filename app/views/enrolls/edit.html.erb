@@ -1,0 +1,23 @@
+
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="enrolls edit">
+  <h2>Update enroll</h2>
+
+  <%= form_for(:enroll, :url => {:action => 'update', :id => @enroll.id}) do |f| %>
+  <%= @enroll.id %>
+    <table summary="enroll form fields">
+      <tr>
+        <th>Grade</th>
+        <td><%= f.text_field :grade %></td>
+      </tr>
+
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update enroll") %>
+    </div>
+
+  <% end %>
+</div>

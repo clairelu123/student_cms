@@ -1,0 +1,33 @@
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+
+
+<div class="enrolls new">
+  <h2>Create enroll</h2>
+
+  <%= form_for(:enroll, :url => {:action => 'create'}) do |f| %>
+
+    <table summary="enroll form fields">
+
+
+
+
+<div class="field"> <!-- Changed to selection menu -->
+  <%= f.label :student_id %><br>
+  <%= f.collection_select(:student_id, Student.all, :id, :display_name) %>
+</div>
+<div class="field"> <!-- Changed to selection menu -->
+  <%= f.label :course_id %><br>
+  <%= f.collection_select(:course_id, Course.all, :id, :display_name) %>
+</div>
+<br \>
+<div class="form-buttons">
+  <%= submit_tag("Add Enrollment") %>
+</div>
+
+</table>
+
+</div>
+
+<% end %>

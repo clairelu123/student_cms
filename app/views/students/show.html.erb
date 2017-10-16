@@ -1,0 +1,28 @@
+<% if !flash[:notice].blank? %>
+  <div class = "notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% @page_title = "Courses" %>
+
+<div class="courses index">
+  <h2>Enrolled Courses</h2>
+
+  <div>enrolled in <%= pluralize(@courses.size, 'course') %> </div>
+
+  <table class="listing" summary="course list">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Course Name</th>
+      <th>Descrition</th>
+
+    </tr>
+    <% @courses.each do |course| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= course.name %></td>
+      <td><%= course.description %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

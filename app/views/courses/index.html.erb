@@ -1,0 +1,39 @@
+<% if !flash[:notice].blank? %>
+  <div class = "notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% @page_title = "Courses" %>
+
+<div class="courses index">
+  <h2>Courses</h2>
+
+  <%= link_to("Add New Course", {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@courses.size, 'course') %> found</div>
+  <table class="listing" summary="course list">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Course Name</th>
+      <th>Descrition</th>
+      <th>Actions</th>
+
+    </tr>
+    <% @courses.each do |course| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= course.name %></td>
+      <td><%= course.description %></td>
+      <td class="actions">
+        <!-- <%= link_to("Add new", {:controller => 'students',:action => 'show',:course_id => course.id}, :class => 'action index') %> -->
+        <%= link_to("Show", {:action => 'show', :id => course.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action => 'edit', :id => course.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id =>course.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<br \>
+<%= link_to("Edit Enrollment", {:controller => 'enrolls',:action => 'index'}, :class => 'action show') %>

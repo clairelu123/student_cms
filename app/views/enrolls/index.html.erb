@@ -1,0 +1,37 @@
+<% if !flash[:notice].blank? %>
+  <div class = "notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% @page_title = "enrolls" %>
+
+<div class="enrolls index">
+  <h2>Enrollment</h2>
+
+  <%= link_to("Add New Enrollment", {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@enrolls.size, 'enrollment') %> found</div>
+  <table class="listing" summary="enroll list">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Student</th>
+      <th>Course</th>
+      <th>Percentage</th>
+      <th>Actions</th>
+
+    </tr>
+    <% @enrolls.each do |enroll| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= enroll.student.name %></td>
+      <td><%= enroll.course.name %></td>
+      <td><%= enroll.grade %></td>
+      <td class="actions">
+
+        <%= link_to("Edit", {:action => 'edit', :id =>enroll.id}, :class => 'action update') %>
+        <%= link_to("Delete", {:action => 'delete', :id =>enroll.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
